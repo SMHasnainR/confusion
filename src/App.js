@@ -1,17 +1,10 @@
-import { Navbar, NavbarBrand } from 'reactstrap';
 import './App.css';
-
+import Main from './components/MainComponent';
 
 function App() {
   return (
-    <div className="App">
-      <Navbar dark color='danger'>
-        <div className='container'>
-            <NavbarBrand href='/'>
-              Confusion App navbar
-            </NavbarBrand>
-        </div>
-      </Navbar>
+    <div>
+      <Main />
     </div>
   );
 }
