@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
+
 
 const DishDetail = (props) => {
 
     const [dish, setDish] = useState(props.dish);
-    useEffect(() => {
-        setDish(props.dish)
-        console.log(dish);
-        // console.log('Dish Details Component did mount');
-    });
-    let commentList = dish ? dish.comments.map((c) => {
+    const [comments, setComments] = useState(props.comments);
+
+    let commentList = comments.map((c) => {
         return (
             <div>
 
@@ -18,10 +17,21 @@ const DishDetail = (props) => {
 
             </div>
         );
-    }) : null;
+    });
 
     return (
         <div className='container'>
+            <div className="row mt-2">
+                <Breadcrumb>
+                    <BreadcrumbItem> <Link to={'/home'}>Home</Link> </BreadcrumbItem>
+                    <BreadcrumbItem ><Link to={'/menu'}>Menu</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>{dish.name}</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>Menu</h3>
+                    <hr />
+                </div>
+            </div>
             <div className='row'>
                 <div className="col-12 col-md-5 m-1">
                     {dish &&
